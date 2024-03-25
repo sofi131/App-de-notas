@@ -4,7 +4,7 @@ function addPostIt() {
     postIt.classList.add('postIt');
     postIt.draggable = true;
     postIt.setAttribute('ondragstart', 'dragStart(event)');
-    postIt.textContent = 'Post-It';
+    postIt.innerHTML = '<span class="postIt-text">Post-It</span>';
     postItContainer.appendChild(postIt);
 }
 
