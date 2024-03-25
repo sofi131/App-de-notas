@@ -10,13 +10,14 @@ import java.util.List;
 
 
 @Entity
-@Table(name="user")
+@Table(name="usuarios")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String user;
+    @JoinColumn (name="user")
+    private String username;
     private String password;
 //    @Column(name = "enabled")
 //    private Boolean enabled;
@@ -36,12 +37,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -64,7 +65,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", user='" + user + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", authorities=" + authorities +
                 '}';

@@ -32,14 +32,14 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
+        User user1 = userRepository.findByUser(username);
+        if (username == null) {
             throw new UsernameNotFoundException("Usuario no encontrado con nombre de usuario: " + username);
         }
         return new org.springframework.security.core.userdetails.User(
-                user.getUser(),
-                user.getPassword(),
-                getAuthorities(user.getAuthorities())
+                user1.getUsername(),
+                user1.getPassword(),
+                getAuthorities(user1.getAuthorities())
         );
     }
 
@@ -52,13 +52,13 @@ public class UserService implements UserDetailsService {
     }
 
     public void crearUsuario(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User newUser=userRepository.save(user);
+        //Encriptamos password
 
-       User newUser=userRepository.save(user);
-       //Encriptamos password
-        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
-       Authority authority=new Authority();
-       authority.setAuthority("USER");
-       authority.setUser_id(newUser.getId());
+        Authority authority=new Authority();
+        authority.setAuthority("USER");
+        authority.setUser_id(newUser.getId());
         authorityRepository.save(authority);
     }
 }
