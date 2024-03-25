@@ -16,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig {
 
     private final UserService userService;
-    private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
+    private final CustomAuthenticationSuccessHandler authenticationSuccessHandler;
 
     @Autowired
     public SecurityConfig(UserService userService,CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler){
@@ -38,6 +38,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/home").permitAll()
                         .requestMatchers("/","/register").permitAll()
                         .requestMatchers("/js/**","/css/**").permitAll()
                         .anyRequest().authenticated()

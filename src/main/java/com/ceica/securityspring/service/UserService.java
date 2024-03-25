@@ -37,7 +37,7 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("Usuario no encontrado con nombre de usuario: " + username);
         }
         return new org.springframework.security.core.userdetails.User(
-                user.getUser(),
+                user.getUsername(),
                 user.getPassword(),
                 getAuthorities(user.getAuthorities())
         );
@@ -52,10 +52,10 @@ public class UserService implements UserDetailsService {
     }
 
     public void crearUsuario(User user) {
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
        User newUser=userRepository.save(user);
        //Encriptamos password
-        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+
        Authority authority=new Authority();
        authority.setAuthority("USER");
        authority.setUser_id(newUser.getId());
