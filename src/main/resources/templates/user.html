@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/note.css">
+    <link rel="stylesheet" th:href="@{/css/note.css}">
 </head>
 <body>
-<div id="header">
-    <div>
-        <img src="ruta_a_la_foto_del_usuario.jpg" alt="Foto del usuario" width="50">
-        <button onclick="addPostIt()">Añadir Post-It</button>
-    </div>
-</div>
+<header>
+    <img th:src="@{/img/fotousuario.png}" alt="Foto del usuario" width="60" height="60">
+    <button onclick="addPostIt()">Añadir Post-It</button>
+</header>
+
 <div id="postItContainer"></div>
 
-<script src="note.js"></script>
+<script th:src="@{/note.js}"></script>
 </body>
 </html>
-
