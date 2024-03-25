@@ -18,6 +18,32 @@ USE `notas`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `authority`
+--
+
+DROP TABLE IF EXISTS `authority`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `authority` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `authority` varchar(45) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fkuser_idx` (`user_id`),
+  CONSTRAINT `fkuser` FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `authority`
+--
+
+LOCK TABLES `authority` WRITE;
+/*!40000 ALTER TABLE `authority` DISABLE KEYS */;
+/*!40000 ALTER TABLE `authority` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `items`
 --
 
@@ -65,7 +91,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'sergio','1234');
+INSERT INTO `usuarios` VALUES (1,'sergio','0bf89346-9f4a-4537-b9c2-533ad31b4e7f');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -78,4 +104,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-25 16:15:44
+-- Dump completed on 2024-03-25 17:14:33
