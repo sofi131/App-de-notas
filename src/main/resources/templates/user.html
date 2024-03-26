@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User Profile</title>
-    <link rel="stylesheet" th:href="@{css/note.css}">
-</head>
-<body>
-<div class="profile">
-    <div class="profile-header">
-        <img th:src="@{/img/fotousuario.png}" alt="Foto del usuario" class="profile-picture" width="50" height="50">
-        <h1 class="profile-name">Your Name</h1>
-        <button onclick="addPostIt()" class="add-button">Añadir Post-It</button>
-    </div>
-
-    <div id="postItContainer" class="postit-container"></div>
-</div>
-
-<script th:src="@{/note.js}"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>User Profile</title>
+        <link rel="stylesheet" th:href="@{css/note.css}">
+    </head>
+    <body>
+        <div class="profile">
+            <div class="profile-header">
+                <div>
+                    <img th:src="@{/img/fotousuario.png}" alt="Foto del usuario" class="profile-picture" width="50" height="50">
+                    <h1 class="profile-name">Your Name</h1>
+                </div>
+                <div>
+                    <button onclick="addPostIt()" class="add-button">Añadir Post-It</button>
+                </div>
+            </div>
+            <hr>
+            <div id="postItContainer" class="postit-container"></div>
+        </div>
+        <script th:src="@{/js/note.js}"></script>
+    </body>
 </html>
