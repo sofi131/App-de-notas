@@ -1,7 +1,7 @@
 function addPostIt() {
     const postItContainer = document.getElementById('postItContainer');
     const postIt = document.createElement('div');
-    postIt.classList.add('postIt');
+    postIt.classList.add('post-it');
     postIt.draggable = true;
     postIt.setAttribute('ondragstart', 'dragStart(event)');
     postIt.innerHTML = '<span class="postIt-text">Post-It</span>';
