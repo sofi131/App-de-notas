@@ -17,7 +17,8 @@
                 </div>
             </div>
             <hr>
-            <div id="postItContainer" class="postit-container"></div>
+            <div id="postItContainer" class="postit-container" ondragover="dragOver(event)" ondrop="drop(event)">
+            </div>
         </div>
         <script th:src="@{/js/note.js}"></script>
     </body>
