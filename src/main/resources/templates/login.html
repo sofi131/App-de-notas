@@ -15,7 +15,7 @@
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
     <div><input type="submit" value="Sign In"/></div>
-    <button th:onclick="|window.location.href='http://localhost:8080/register'|">Registrate aquí</button>
+    <button th:onclick="@{/register}">Registrate aquí</button>
 </form>
 </body>
 </html>
