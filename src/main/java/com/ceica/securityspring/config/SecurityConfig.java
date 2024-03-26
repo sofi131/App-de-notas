@@ -1,4 +1,5 @@
 package com.ceica.securityspring.config;
+import com.ceica.securityspring.service.ItemService;
 import com.ceica.securityspring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,10 +17,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig {
 
     private final UserService userService;
+
     private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
 
     @Autowired
-    public SecurityConfig(UserService userService,CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler){
+    public SecurityConfig(UserService userService,  CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler){
         this.userService = userService;
         this.authenticationSuccessHandler=customAuthenticationSuccessHandler;
     }

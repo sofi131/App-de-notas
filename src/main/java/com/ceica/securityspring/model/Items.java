@@ -1,13 +1,21 @@
 package com.ceica.securityspring.model;
 
+import jakarta.persistence.*;
+
 import javax.swing.*;
 import java.util.Date;
+@Entity
+@Table(name="items")
 
 public class Items {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int user_id;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private String title;
 
@@ -28,13 +36,7 @@ public class Items {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
-    }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
 
     public String getTitle() {
         return title;
@@ -60,14 +62,24 @@ public class Items {
         this.fecha = fecha;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Items{" +
                 "id=" + id +
-                ", user_id=" + user_id +
+                ", user=" + user +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", fecha=" + fecha +
                 '}';
     }
 }
+
+

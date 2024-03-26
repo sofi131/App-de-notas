@@ -1,5 +1,6 @@
 package com.ceica.securityspring.model;
 
+import com.ceica.securityspring.model.Authority;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +17,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @JoinColumn (name="user")
+
+    @Column(name = "user")
     private String username;
     private String password;
 //    @Column(name = "enabled")

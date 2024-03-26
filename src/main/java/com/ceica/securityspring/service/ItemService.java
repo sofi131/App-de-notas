@@ -2,17 +2,21 @@ package com.ceica.securityspring.service;
 
 import com.ceica.securityspring.model.Items;
 import com.ceica.securityspring.repository.ItemsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 @Service
-public class ItemService {
+public class ItemService  {
 
     private ItemsRepository itemsRepository;
 
-
-    public ItemService() {
+    @Autowired
+    public ItemService(ItemsRepository itemsRepository) {
         this.itemsRepository = itemsRepository;
     }
 
@@ -46,8 +50,11 @@ public class ItemService {
         return itemsRepository.findByTitle(titulo);
     }
 
-    public int contarItemsPorUsuario(int userId) {
-        return itemsRepository.countByUserId(userId);
+    public List<Items> buscarItemsPorUser(Integer iduser){
+        return  itemsRepository.findByUserId(iduser);
+    }
+    public List<Items> buscarTodas(){
+        return  itemsRepository.findAll();
     }
 
 }

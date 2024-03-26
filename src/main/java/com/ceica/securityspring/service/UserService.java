@@ -3,6 +3,7 @@ package com.ceica.securityspring.service;
 import com.ceica.securityspring.model.Authority;
 import com.ceica.securityspring.model.User;
 import com.ceica.securityspring.repository.AuthorityRepository;
+import com.ceica.securityspring.repository.ItemsRepository;
 import com.ceica.securityspring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,23 +24,25 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepository;
     private AuthorityRepository authorityRepository;
     private BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
     public UserService(UserRepository userRepository,AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
         this.authorityRepository=authorityRepository;
+
         passwordEncoder=new BCryptPasswordEncoder();
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user1 = userRepository.findByUser(username);
-        if (username == null) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
             throw new UsernameNotFoundException("Usuario no encontrado con nombre de usuario: " + username);
         }
         return new org.springframework.security.core.userdetails.User(
-                user1.getUsername(),
-                user1.getPassword(),
-                getAuthorities(user1.getAuthorities())
+                user.getUsername(),
+                user.getPassword(),
+                getAuthorities(user.getAuthorities())
         );
     }
 
@@ -50,6 +53,21 @@ public class UserService implements UserDetailsService {
         }
         return grantedAuthorities;
     }
+
+
+    public User findUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    /*
+    public void deleteUserById(int userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        userOptional.ifPresent(user -> {
+            userRepository.delete(user);
+        });
+    }
+
+     */
 
     public void crearUsuario(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
