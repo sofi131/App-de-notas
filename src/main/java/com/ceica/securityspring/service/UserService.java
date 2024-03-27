@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -59,7 +60,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUsername(username);
     }
 
-    /*
+
     public void deleteUserById(int userId) {
         Optional<User> userOptional = userRepository.findById(userId);
         userOptional.ifPresent(user -> {
@@ -67,7 +68,7 @@ public class UserService implements UserDetailsService {
         });
     }
 
-     */
+
 
     public void crearUsuario(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -75,7 +76,7 @@ public class UserService implements UserDetailsService {
         //Encriptamos password
 
         Authority authority=new Authority();
-        authority.setAuthority("USER");
+        authority.setAuthority("User");
         authority.setUser_id(newUser.getId());
         authorityRepository.save(authority);
     }
