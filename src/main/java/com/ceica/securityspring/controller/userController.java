@@ -50,7 +50,8 @@ public class userController {
     public String eliminarItemPorId(@PathVariable("itemId") int itemId, Model model) {
         itemService.eliminarItemPorId(itemId);
         model.addAttribute("eliminarNota", "¡Nota eliminada correctamente!");
-        return "user";
+
+        return "redirect:/user";
     }
 
     @GetMapping("/user/{username}")

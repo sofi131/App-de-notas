@@ -45,7 +45,7 @@
                 <div th:each="nota : ${listaNotaUser}" class="post-it">
                     <h2 th:text="${nota.title}"></h2>
                     <p th:text="${nota.description}"></p>
-
+                    <button th:action="@{/eliminarNota}" class="delete-button">Borrar</button>
                 </div>
 
             </div>

@@ -24,6 +24,32 @@ function addPostIt(title, description) {
     saveButton.textContent = 'Guardar';
     const editButton = document.createElement('button');
     editButton.textContent = 'Editar';
+    /*const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Borrar';
+    deleteButton.classList.add('delete-button');
+    deleteButton.onclick = function() {
+        // Aquí iría la lógica para borrar el post-it de la base de datos
+        postIt.remove(); // Eliminar el post-it del DOM
+    };*/
+
+    postIt.appendChild(saveButton);
+    postIt.appendChild(editButton);
+    //postIt.appendChild(deleteButton);
+
+    // Agregar el post-it al contenedor
+    postItContainer.appendChild(postIt);
+}
+
+// Llamar a la función para agregar post-its guardados por el usuario
+// Suponiendo que "postItsData" es un arreglo de objetos con los post-its guardados
+postItsData.forEach(function(postItData) {
+    addPostIt(postItData.title, postItData.description);
+
+    // Crear botones para guardar, editar y borrar
+    const saveButton = document.createElement('button');
+    saveButton.textContent = 'Guardar';
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Editar';
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Borrar';
     deleteButton.classList.add('delete-button');
@@ -37,11 +63,5 @@ function addPostIt(title, description) {
     postIt.appendChild(deleteButton);
 
     // Agregar el post-it al contenedor
-    postItContainer.appendChild(postIt);
-}
-
-// Llamar a la función para agregar post-its guardados por el usuario
-// Suponiendo que "postItsData" es un arreglo de objetos con los post-its guardados
-postItsData.forEach(function(postItData) {
-    addPostIt(postItData.title, postItData.description);
+    postItViewer.appendChild(postIt);
 });
