@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>User Profile</title>
-        <link rel="stylesheet" th:href="@{css/note.css}">
-    </head>
-    <body>
-        <div class="profile">
-            <div class="profile-header">
-                <div>
-                    <img th:src="@{/img/fotousuario.png}" alt="Foto del usuario" class="profile-picture" width="50" height="50">
-                    <h1 class="profile-name">Your Name</h1>
-                </div>
-                <div>
-                    <button onclick="addPostIt()" class="add-button">Añadir Post-It</button>
-                </div>
-            </div>
-            <hr>
-            <div id="postItContainer" class="postit-container" ondragover="dragOver(event)" ondrop="drop(event)">
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" th:href="@{css/note.css}">
+</head>
+<body>
+<div class="profile">
+    <div class="profile-header">
+        <div>
+            <img th:src="@{/img/fotousuario.png}" alt="Foto del usuario" class="profile-picture" width="50" height="50">
+            <h1 class="profile-name">Your Name</h1>
         </div>
-        <script th:src="@{/js/note.js}"></script>
-    </body>
+        <div>
+            <button onclick="addPostIt()" class="add-button">Añadir Post-It</button>
+        </div>
+    </div>
+    <hr>
+    <form th:action="@{/user}" method="post">
+    <div class="post-it" draggable="true" ondragstart="dragStart(event)"><span
+            class="postIt-text">Nueva Nota</span><input name="title" type="text" placeholder="Título" class="postIt-title"><textarea
+            placeholder="Contenido" class="postIt-content" name="description"></textarea>
+        <button type="submit">Guardar</button>
+        <button>Editar</button>
+        <button class="delete-button">Borrar</button>
+    </div>
+    </form>
+
+
+    <div id="postItContainer" class="postit-container" ondragover="dragOver(event)" ondrop="drop(event)">
+
+    </div>
+</div>
+<script th:src="@{/js/note.js}"></script>
+</body>
 </html>
