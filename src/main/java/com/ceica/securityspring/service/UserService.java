@@ -3,6 +3,7 @@ package com.ceica.securityspring.service;
 import com.ceica.securityspring.model.Authority;
 import com.ceica.securityspring.model.User;
 import com.ceica.securityspring.repository.AuthorityRepository;
+import com.ceica.securityspring.repository.ItemsRepository;
 import com.ceica.securityspring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -23,10 +25,12 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepository;
     private AuthorityRepository authorityRepository;
     private BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
     public UserService(UserRepository userRepository,AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
         this.authorityRepository=authorityRepository;
+
         passwordEncoder=new BCryptPasswordEncoder();
     }
 
@@ -51,14 +55,29 @@ public class UserService implements UserDetailsService {
         return grantedAuthorities;
     }
 
+
+    public User findUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+
+    public void deleteUserById(int userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        userOptional.ifPresent(user -> {
+            userRepository.delete(user);
+        });
+    }
+
+
+
     public void crearUsuario(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-       User newUser=userRepository.save(user);
-       //Encriptamos password
+        User newUser=userRepository.save(user);
+        //Encriptamos password
 
-       Authority authority=new Authority();
-       authority.setAuthority("USER");
-       authority.setUser_id(newUser.getId());
+        Authority authority=new Authority();
+        authority.setAuthority("User");
+        authority.setUser_id(newUser.getId());
         authorityRepository.save(authority);
     }
 }

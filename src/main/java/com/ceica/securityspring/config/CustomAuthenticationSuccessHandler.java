@@ -1,11 +1,13 @@
 package com.ceica.securityspring.config;
 
+import com.ceica.securityspring.service.ItemService;
 import com.ceica.securityspring.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.hibernate.annotations.Comment;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -19,7 +21,10 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Autowired
     public CustomAuthenticationSuccessHandler(UserService userService) {
         this.userService = userService;
+
     }
+
+
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {

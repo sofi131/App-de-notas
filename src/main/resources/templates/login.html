@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>Spring Security Example </title>
-    </head>
-    <body>
-        <div th:if="${param.error}">
-            Invalid user and password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <h1>login</h1>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-        </form>
-        <button th:onclick="|window.location.href='http://localhost:8080/register'|">Registrate aquí</button>
-    </body>
+<head>
+    <title>Spring Security Example </title>
+    <link rel="stylesheet" th:href="@{css/login.css}">
+</head>
+<body>
+<div th:if="${param.error}">
+    Invalid user and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<h1>Login</h1>
+<form th:action="@{/login}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+<button th:onclick="|window.location.href='http://localhost:8080/register'|">Sign up</button>
+</body>
 </html>
