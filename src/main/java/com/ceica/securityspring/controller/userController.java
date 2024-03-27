@@ -42,8 +42,8 @@ public class userController {
         items.setUser(user);
         items.setFecha(new Date());
         Items item = itemService.crearItem(items);
-        model.addAttribute("crearNota", item);
-        return "user";
+
+        return "redirect:/user";
     }
 
     @GetMapping("/user/{itemId}")

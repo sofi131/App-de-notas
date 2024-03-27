@@ -28,12 +28,12 @@
             </form>
 
 
-            <div id="postItContainer" class="postit-container" ondragover="dragOver(event)" ondrop="drop(event)">
+            <div id="postItContainer" ondragover="dragOver(event)" ondrop="drop(event)">
 
             </div>
+            <hr>
+            <div id="postItViewer" class="postit-container">
 
-            <div class="postit-viewer">
-                <hr>
                 <!-- Iterar sobre los post-its guardados por el usuario -->
                 <!--<div th:each="postit : ${postits}" class="post-it">
                     <span class="postIt-text" th:text="${postit.title}">Título del Post-It</span>
@@ -47,8 +47,9 @@
                     <p th:text="${nota.description}"></p>
 
                 </div>
-                <hr>
-                </div>
+
+            </div>
+            <hr>
             </div>
 
         </div>
