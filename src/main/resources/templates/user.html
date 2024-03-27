@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User Profile</title>
-    <link rel="stylesheet" th:href="@{css/note.css}">
-</head>
-<body>
-<div class="profile">
-    <div class="profile-header">
-        <div>
-            <img th:src="@{/img/fotousuario.png}" alt="Foto del usuario" class="profile-picture" width="50" height="50">
-            <h1 class="profile-name">Your Name</h1>
+    <head>
+        <meta charset="UTF-8">
+        <title>User Profile</title>
+        <link rel="stylesheet" th:href="@{css/note.css}">
+    </head>
+    <body>
+        <div class="profile">
+            <div class="profile-header">
+                <div>
+                    <img th:src="@{/img/fotousuario.png}" alt="Foto del usuario" class="profile-picture" width="50" height="50">
+                    <h1 class="profile-name">Your Name</h1>
+                </div>
+                <div>
+                    <button onclick="addPostIt()" class="add-button">Añadir Post-It</button>
+                </div>
+            </div>
+            <hr>
+            <form th:action="@{/user}" method="post">
+            <div class="post-it" draggable="true" ondragstart="dragStart(event)"><span
+                    class="postIt-text">Nueva Nota</span><input name="title" type="text" placeholder="Título" class="postIt-title"><textarea
+                    placeholder="Contenido" class="postIt-content" name="description"></textarea>
+                <button type="submit">Guardar</button>
+                <button>Editar</button>
+                <button class="delete-button">Borrar</button>
+            </div>
+            </form>
+
+
+            <div id="postItContainer" class="postit-container" ondragover="dragOver(event)" ondrop="drop(event)">
+
+            </div>
+
+            <div class="postit-viewer">
+                <hr>
+                <!-- Iterar sobre los post-its guardados por el usuario -->
+                <!--<div th:each="postit : ${postits}" class="post-it">
+                    <span class="postIt-text" th:text="${postit.title}">Título del Post-It</span>
+                    <input type="text" placeholder="Título" class="postIt-title" th:value="${postit.title}">
+                    <textarea placeholder="Contenido" class="postIt-content" th:text="${postit.description}">Contenido del Post-It</textarea>
+                    <button type="button">Guardar</button>
+                    <button>Editar</button>
+                    <button class="delete-button">Borrar</button>-->
+                <div th:each="nota : ${listaNotaUser}" class="post-it">
+                    <h2 th:text="${nota.title}"></h2>
+                    <p th:text="${nota.description}"></p>
+
+                </div>
+                <hr>
+                </div>
+            </div>
+
         </div>
-        <div>
-            <button onclick="addPostIt()" class="add-button">Añadir Post-It</button>
-        </div>
-    </div>
-    <hr>
-    <form th:action="@{/user}" method="post">
-    <div class="post-it" draggable="true" ondragstart="dragStart(event)"><span
-            class="postIt-text">Nueva Nota</span><input name="title" type="text" placeholder="Título" class="postIt-title"><textarea
-            placeholder="Contenido" class="postIt-content" name="description"></textarea>
-        <button type="submit">Guardar</button>
-        <button>Editar</button>
-        <button class="delete-button">Borrar</button>
-    </div>
-    </form>
-
-
-    <div id="postItContainer" class="postit-container" ondragover="dragOver(event)" ondrop="drop(event)">
-
-    </div>
-</div>
-<script th:src="@{/js/note.js}"></script>
-</body>
+        <script th:src="@{/js/note.js}"></script>
+    </body>
 </html>
