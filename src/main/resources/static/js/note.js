@@ -20,13 +20,25 @@ function addPostIt() {
     contentInput.classList.add('postIt-content');
     postIt.appendChild(contentInput);
 
-    // Crear botón para borrar la nota
+    // Crear botón para guardar la nota en la BDD
+    const saveButton = document.createElement('button');
+    saveButton.textContent = 'Guardar';
+
+    // Crear botón para editar la nota en la BDD
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Editar';
+
+    // Crear botón para borrar la nota de la BDD
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Borrar';
     deleteButton.classList.add('delete-button');
     deleteButton.onclick = function() {
         postIt.remove(); // Eliminar el post-it cuando se hace clic en el botón
     };
+
+
+    postIt.appendChild(saveButton);
+    postIt.appendChild(editButton);
     postIt.appendChild(deleteButton);
 
     // Agregar el post-it al contenedor
