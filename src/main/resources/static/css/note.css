@@ -1,6 +1,9 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 body {
-    font-family: Arial, sans-serif;
-    background-color: #ca9de3;
+    font-family: fantasy;
+    background-color: #fce4ec; /* Fondo rosa */
     margin: 0;
     padding: 0;
 }
@@ -32,33 +35,42 @@ body {
 }
 
 .add-button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #ffd54f; /* Color amarillo */
+    color: #000; /* Texto negro para mayor contraste */
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
 }
 
 .add-button:hover {
-    background-color: #0056b3;
+    background-color: #ffeb3b; /* Color amarillo más claro al pasar el ratón */
 }
 
 .post-it {
     width: 200px;
     height: 150px;
     background-color: yellow;
-    border: 1px solid black;
+    border: 1px solid #ccc; /* Borde más claro */
     margin: 10px;
     padding: 10px;
+    transition: box-shadow 0.3s ease; /* Transición suave de la sombra */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 10px; /* Añade un poco de border-radius */
 }
+
+.post-it:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al pasar el ratón */
+}
+
 
 .post-it input {
-    width: 100%;
+    width: calc(100% - 20px); /* Ajusta el ancho del input para compensar el padding */
+    margin-bottom: 10px; /* Añade espacio entre el input y el textarea */
 }
 
-.postit-container
-{
+.postit-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

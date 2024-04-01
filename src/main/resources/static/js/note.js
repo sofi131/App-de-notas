@@ -1,49 +1,34 @@
-function addPostIt() {
+window.onload=()=>{
+    let editarBotones=document.getElementsByClassName("edit-button");
+    for (let i = 0; i < editarBotones.length; i++) {
+        editarBotones[i].onclick=(e)=>{
+            const form=e.currentTarget.parentElement.querySelector("form");
+            if (form) {
+                if (form.style.display === "none" || form.style.display === "") {
+                    form.style.display = "block";
+                } else {
+                    form.style.display = "none";
+                }
+            } else {
+                console.error("Formulario no encontrado con el ID:", formId);
+            }
+        }
+    }
+}
+
+
+function togglePostItContainer() {
     const postItContainer = document.getElementById('postItContainer');
-    const postIt = document.createElement('div');
-    postIt.classList.add('post-it');
-    postIt.draggable = true;
-    postIt.setAttribute('ondragstart', 'dragStart(event)');
-    postIt.innerHTML = '<span class="postIt-text">Nueva Nota</span>';
-    postItContainer.appendChild(postIt);
+    const addButton = document.querySelector('.add-button');
 
-    // Crear entrada de texto para el título
-    const titleInput = document.createElement('input');
-    titleInput.type = 'text';
-    titleInput.placeholder = 'Título';
-    titleInput.classList.add('postIt-title');
-    postIt.appendChild(titleInput);
-
-    // Crear entrada de texto para el contenido de la nota
-    const contentInput = document.createElement('textarea');
-    contentInput.placeholder = 'Contenido';
-    contentInput.classList.add('postIt-content');
-    postIt.appendChild(contentInput);
-
-    // Crear botón para guardar la nota en la BDD
-    const saveButton = document.createElement('button');
-    saveButton.textContent = 'Guardar';
-
-    // Crear botón para editar la nota en la BDD
-    const editButton = document.createElement('button');
-    editButton.textContent = 'Editar';
-
-    // Crear botón para borrar la nota de la BDD
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Borrar';
-    deleteButton.classList.add('delete-button');
-    deleteButton.onclick = function() {
-        postIt.remove(); // Eliminar el post-it cuando se hace clic en el botón
-    };
-
-
-    postIt.appendChild(saveButton);
-    postIt.appendChild(editButton);
-    postIt.appendChild(deleteButton);
-
-    // Agregar el post-it al contenedor
-    postItContainer.appendChild(postIt);
-
+    // Si el contenedor está oculto, lo mostramos; de lo contrario, lo ocultamos
+    if (postItContainer.classList.contains('hidden')) {
+        postItContainer.classList.remove('hidden');
+        addButton.textContent = 'Ocultar Post-It';
+    } else {
+        postItContainer.classList.add('hidden');
+        addButton.textContent = 'Añadir Post-It';
+    }
 }
 
 // Función para manejar el evento de inicio de arrastre
@@ -63,4 +48,19 @@ function drop(event) {
     const draggableElement = document.getElementById(data);
     const dropzone = event.target.closest('.postit-container');
     dropzone.insertBefore(draggableElement, event.target);
+}
+
+// Función para mostrar u ocultar el formulario de edición
+
+function toggleForm(e) {
+    var form = document.getElementById(formId);
+    if (form) {
+        if (form.style.display === "none" || form.style.display === "") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    } else {
+        console.error("Formulario no encontrado con el ID:", formId);
+    }
 }

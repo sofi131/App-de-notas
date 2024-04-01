@@ -15,6 +15,7 @@ public class Items {
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
+
     private User user;
 
     private String title;
