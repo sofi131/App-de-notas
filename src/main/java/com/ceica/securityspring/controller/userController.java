@@ -44,35 +44,17 @@ public class userController {
         model.addAttribute("crearNota", item);
         return "redirect:/user";
     }
-/*
-    @PostMapping("/user")
-    public String eliminarItem(@RequestParam("itemId") int itemId, RedirectAttributes redirectAttributes) {
+    //----------------ELIMINAR ITEM--------
+    @PostMapping("/deleteitem")
+    public String eliminarItem(@RequestParam int itemId, Model model) {
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        // Aquí se invoca el método del servicio para eliminar el ítem por su ID
+        User user = userService.findUserByUsername(authentication.getName());
         itemService.eliminarItemPorId(itemId);
-        // Se agrega un mensaje de éxito para mostrar en la vista
-        redirectAttributes.addFlashAttribute("eliminarNota", "¡Nota eliminada correctamente!");
-        // Se redirige de vuelta a la página de usuario
+        model.addAttribute("eliminarNota", "La nota ha sido eliminada.");
         return "redirect:/user";
     }
-
- */
     //--------------------------------editar item---------------------------------
-@GetMapping("/user/{itemId}/editar")
-public String editarItemPorId(@PathVariable("itemId") int itemId, Model model) {
-    // Aquí solo deberíamos redirigir al formulario de edición, no eliminar el ítem
-    // Primero, cargamos la nota a editar y la pasamos al formulario de edición
-    Items notaEditar = itemService.encontrarItemPorId(itemId).orElse(null);
-    if (notaEditar == null) {
-        // Manejar el caso en que la nota no exista
-        throw new IllegalArgumentException("La nota con ID " + itemId + " no existe");
-    }
-    model.addAttribute("itemEditar", notaEditar);
-
-    // Retornamos la vista del formulario de edición
-    return "formulario-edicion";
-}
-
 
     @PostMapping("/user/editar")
     public String editarItem(Model model, @ModelAttribute Items items) {

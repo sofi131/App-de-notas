@@ -30,10 +30,10 @@
     </div>
     <hr>
     <div id="postItViewer" class="postit-container">
-        <div th:each="nota : ${listaNotaUser}" class="post-it">
+        <div th:each="nota : ${listaNotaUser}" class="post-it" th:id="'postIt_' + ${nota.id}">
             <h2 th:text="${nota.title}"></h2>
             <p th:text="${nota.description}"></p>
-            <button  class="edit-button">Editar</button>
+            <button onclick="toggleFormAndHideElements('editForm_${nota.id}', 'postIt_${nota.id}')" class="edit-button">Editar</button>
             <button th:action="@{/eliminarNota}" class="delete-button">Borrar</button>
             <!-- Formulario de edición -->
             <form th:id="'editForm_' + ${nota.id}" th:action="@{/user/editar}" method="post" style="display: none">

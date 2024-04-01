@@ -27,9 +27,10 @@ public class ItemService {
         return itemsRepository.findById(itemId);
     }
 
-//    public void eliminarItemPorId(int itemsId) {
-//        itemsRepository.deleteById(itemsId);
-//    }
+//eliminar item
+    public void eliminarItemPorId(int itemId) {
+        itemsRepository.deleteById(itemId);
+    }
 
     // Método para modificar un item existente
     public Items modificarItem(Items items) {

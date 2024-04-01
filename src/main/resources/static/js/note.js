@@ -1,8 +1,8 @@
-window.onload=()=>{
-    let editarBotones=document.getElementsByClassName("edit-button");
+window.onload = () => {
+    let editarBotones = document.getElementsByClassName("edit-button");
     for (let i = 0; i < editarBotones.length; i++) {
-        editarBotones[i].onclick=(e)=>{
-            const form=e.currentTarget.parentElement.querySelector("form");
+        editarBotones[i].onclick = (e) => {
+            const form = e.currentTarget.parentElement.querySelector("form");
             if (form) {
                 if (form.style.display === "none" || form.style.display === "") {
                     form.style.display = "block";
@@ -10,13 +10,13 @@ window.onload=()=>{
                     form.style.display = "none";
                 }
             } else {
-                console.error("Formulario no encontrado con el ID:", formId);
+                console.error("Formulario no encontrado dentro del padre del botón de edición");
             }
         }
     }
 }
 
-
+// Función para mostrar u ocultar el contenedor de post-its
 function togglePostItContainer() {
     const postItContainer = document.getElementById('postItContainer');
     const addButton = document.querySelector('.add-button');
@@ -51,9 +51,8 @@ function drop(event) {
 }
 
 // Función para mostrar u ocultar el formulario de edición
-
 function toggleForm(e) {
-    var form = document.getElementById(formId);
+    var form = e.currentTarget.parentElement.querySelector("form");
     if (form) {
         if (form.style.display === "none" || form.style.display === "") {
             form.style.display = "block";
@@ -61,6 +60,6 @@ function toggleForm(e) {
             form.style.display = "none";
         }
     } else {
-        console.error("Formulario no encontrado con el ID:", formId);
+        console.error("Formulario no encontrado dentro del padre del botón de edición");
     }
 }

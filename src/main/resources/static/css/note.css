@@ -1,6 +1,7 @@
-*{
+* {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 body {
     font-family: fantasy;
     background-color: #fce4ec; /* Fondo rosa */
@@ -64,7 +65,6 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al pasar el ratón */
 }
 
-
 .post-it input {
     width: calc(100% - 20px); /* Ajusta el ancho del input para compensar el padding */
     margin-bottom: 10px; /* Añade espacio entre el input y el textarea */
@@ -74,4 +74,31 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+/* Ocultar los labels dentro del formulario de edición */
+.post-it form label {
+    display: none;
+}
+
+/* Mostrar los inputs dentro del formulario de edición */
+.post-it form input,
+.post-it form textarea {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Estilo para el botón de guardar dentro del formulario de edición */
+.post-it form button[type="submit"] {
+    background-color: #4caf50; /* Color verde */
+    color: #fff; /* Texto blanco */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.post-it form button[type="submit"]:hover {
+    background-color: #45a049; /* Color verde más oscuro al pasar el ratón */
 }
