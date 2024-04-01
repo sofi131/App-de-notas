@@ -2,7 +2,7 @@ window.onload = () => {
     let editarBotones = document.getElementsByClassName("edit-button");
     for (let i = 0; i < editarBotones.length; i++) {
         editarBotones[i].onclick = (e) => {
-            const form = e.currentTarget.parentElement.querySelector("form");
+            const form = e.currentTarget.parentElement.querySelector("form.editar");
             if (form) {
                 if (form.style.display === "none" || form.style.display === "") {
                     form.style.display = "block";
