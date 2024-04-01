@@ -54,6 +54,14 @@ public class userController {
         return "redirect:/user";
     }
 
+    @GetMapping("/user/{editar}")
+    public String editarItemPorId(@PathVariable("itemId") int itemId, Model model) {
+        itemService.eliminarItemPorId(itemId);
+        model.addAttribute("eliminarNota", "¡Nota eliminada correctamente!");
+
+        return "redirect:/user";
+    }
+
     @GetMapping("/user/{username}")
     public User getUserByUsername(@PathVariable String username) {
         return userService.findUserByUsername(username);

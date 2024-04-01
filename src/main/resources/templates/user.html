@@ -46,6 +46,10 @@
                     <h2 th:text="${nota.title}"></h2>
                     <p th:text="${nota.description}"></p>
                     <button th:action="@{/eliminarNota}" class="delete-button">Borrar</button>
+                    <form th:action="@{editar}" method="post" th:disabled="none">
+                        <input type="text" name="title" id="" th:value="${nota.title}">
+                        <input type="submit" value="Editar">
+                    </form>
                 </div>
 
             </div>
