@@ -16,8 +16,6 @@
             <button onclick="addPostIt()" class="add-button">Añadir Post-It</button>
         </div>
     </div>
-    <hr>
-
 
     <div id="postItContainer" ondragover="dragOver(event)" ondrop="drop(event)" class="ocultar">
         <!-- Aquí se insertarán los post-its -->
@@ -30,7 +28,7 @@
             </div>
         </form>
     </div>
-    <hr>
+
     <div id="postItViewer" class="postit-container">
         <!-- Ciclo para cada nota del usuario -->
         <div th:each="nota : ${listaNotaUser}" class="post-it">
@@ -55,7 +53,7 @@
             </form>
         </div>
     </div>
-    <hr>
+
 </div>
 <script th:src="@{/js/note.js}"></script>
 </body>

@@ -91,7 +91,7 @@ body {
 
 /* Estilo para el botón de guardar dentro del formulario de edición */
 .post-it form button[type="submit"]{
-    background-color: #e16995; /* Color rosado oscuro */
+    background-color: #fce4ec; /* Color rosado oscuro */
     color: #fff; /* Texto blanco */
     border: none;
     padding: 8px 16px; /* Reducir el padding para hacer el botón menos gordo */
@@ -102,12 +102,12 @@ body {
 }
 
 .post-it form button[type="submit"]{
-    background-color: #e16995; /* Color rosado más oscuro al pasar el ratón */
+    background-color: #ce6887; /* Color rosado más oscuro al pasar el ratón */
 }
 /* editar*/
 /* Estilo para el botón de edición */
 .edit-button {
-    background-color: #e16995; /* Color rosado oscuro */
+    background-color: #ce6887; /* Color rosado oscuro */
     color: #fff; /* Texto blanco */
     border: none;
     padding: 8px 16px; /* Reducir el padding para hacer el botón menos gordo */
@@ -117,12 +117,12 @@ body {
 }
 
 .edit-button:hover {
-    background-color: #e16995; /* Color rosado más oscuro al pasar el ratón */
+    background-color: #ce6887; /* Color rosado más oscuro al pasar el ratón */
 }
 
 
 .delete-button {
-    background-color: #e16995; /* Color rosado oscuro */
+    background-color: #ce6887; /* Color rosado oscuro */
     color: #fff; /* Texto blanco */
     border: none;
     padding: 8px 16px; /* Reducir el padding para hacer el botón menos gordo */
@@ -132,7 +132,7 @@ body {
 }
 
 .delete-button:hover {
-    background-color: #e16995; /* Color rosado más oscuro al pasar el ratón */
+    background-color: #ce6887; /* Color rosado más oscuro al pasar el ratón */
 }
 
 /* Contenedor de los botones */

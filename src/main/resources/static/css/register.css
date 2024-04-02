@@ -20,7 +20,8 @@ form {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+button#login-button {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -29,7 +30,8 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
-input[type="submit"] {
+input[type="submit"],
+button#login-button {
     width: 100%;
     background-color: #007bff;
     color: #fff;
@@ -40,6 +42,7 @@ input[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+button#login-button:hover {
     background-color: #0056b3;
 }
