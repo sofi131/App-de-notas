@@ -2,19 +2,20 @@ window.onload = () => {
     let editarBotones = document.getElementsByClassName("edit-button");
     for (let i = 0; i < editarBotones.length; i++) {
         editarBotones[i].onclick = (e) => {
-            const form = e.currentTarget.parentElement.querySelector("form.editar");
-            if (form) {
-                if (form.style.display === "none" || form.style.display === "") {
-                    form.style.display = "block";
-                } else {
-                    form.style.display = "none";
-                }
+            const divEditar = e.currentTarget.parentElement.parentElement.querySelector(".editar");
+            const divDatos = e.currentTarget.closest(".post-it").querySelector(".datos");
+            if (divDatos && divEditar) {
+                // Oculta el div de datos y muestra el formulario de edición
+                divDatos.style.display = "none";
+                divEditar.style.display = "block";
             } else {
-                console.error("Formulario no encontrado dentro del padre del botón de edición");
+                console.error("Elemento con clase 'datos' o 'editar' no encontrado dentro del padre del botón de edición");
             }
         }
     }
 }
+
+
 
 // Función para mostrar u ocultar el contenedor de post-its
 function togglePostItContainer() {
@@ -62,4 +63,14 @@ function toggleForm(e) {
     } else {
         console.error("Formulario no encontrado dentro del padre del botón de edición");
     }
+
+    //CANCELAR EDICIÓN
+    function cancelEdit(button) {
+        const form = button.closest('form');
+        if (form) {
+            form.style.display = 'none';
+            // Aquí puedes realizar cualquier otra acción que desees al cancelar la edición
+        }
+    }
+
 }
