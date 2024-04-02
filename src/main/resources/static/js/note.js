@@ -8,12 +8,23 @@ window.onload = () => {
                 // Oculta el div de datos y muestra el formulario de edición
                 divDatos.style.display = "none";
                 divEditar.style.display = "block";
+
+                // Obtener el botón de cancelar dentro del formulario de edición
+                const cancelButton = divEditar.querySelector(".cancel-button");
+
+                // Agregar evento de clic al botón de cancelar
+                cancelButton.onclick = () => {
+                    // Ocultar el formulario de edición y mostrar el div de datos
+                    divDatos.style.display = "block";
+                    divEditar.style.display = "none";
+                };
             } else {
                 console.error("Elemento con clase 'datos' o 'editar' no encontrado dentro del padre del botón de edición");
             }
         }
     }
 }
+
 
 
 

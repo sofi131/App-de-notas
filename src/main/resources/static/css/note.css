@@ -1,3 +1,4 @@
+/* Estilos generales */
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -89,16 +90,39 @@ body {
 }
 
 /* Estilo para el botón de guardar dentro del formulario de edición */
-.post-it form button[type="submit"] {
-    background-color: #4caf50; /* Color verde */
+.post-it form button[type="submit"],
+.post-it form button.edit-button {
+    background-color: #e91e63; /* Color rosado oscuro */
     color: #fff; /* Texto blanco */
     border: none;
-    padding: 10px 20px;
+    padding: 8px 16px; /* Reducir el padding para hacer el botón menos gordo */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+    margin-right: 5px; /* Margen a la derecha para separar los botones */
+}
+
+.post-it form button[type="submit"]:hover,
+.post-it form button.edit-button:hover {
+    background-color: #d81b60; /* Color rosado más oscuro al pasar el ratón */
+}
+
+.delete-button {
+    background-color: #e91e63; /* Color rosado oscuro */
+    color: #fff; /* Texto blanco */
+    border: none;
+    padding: 8px 16px; /* Reducir el padding para hacer el botón menos gordo */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease; /* Transición suave del color de fondo */
 }
 
-.post-it form button[type="submit"]:hover {
-    background-color: #45a049; /* Color verde más oscuro al pasar el ratón */
+.delete-button:hover {
+    background-color: #d81b60; /* Color rosado más oscuro al pasar el ratón */
+}
+
+/* Contenedor de los botones */
+.button-container {
+    margin-top: 10px; /* Margen superior para separar los botones de los datos */
+    display: flex; /* Utilizar flexbox */
 }

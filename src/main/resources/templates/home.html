@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-    <body>
-        <h1>Home</h1>
-        <button th:onclick="|window.location.href='http://localhost:8080/login'|">Sign in</button>
-        <button th:onclick="|window.location.href='http://localhost:8080/register'|">Sign up</button>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{css/home.css}">
+</head>
+<body>
+<h1>Home</h1>
+<div class="button-container">
+    <button class="button" onclick="window.location.href='http://localhost:8080/login'">Sign in</button>
+    <button class="button" onclick="window.location.href='http://localhost:8080/register'">Sign up</button>
+</div>
+</body>
 </html>
