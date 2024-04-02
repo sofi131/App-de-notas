@@ -17,30 +17,34 @@
         </div>
     </div>
     <hr>
-    <form th:action="@{/user}" method="post">
-        <div class="post-it" draggable="true" ondragstart="dragStart(event)"><span
-                class="postIt-text">Nueva Nota</span><input name="title" type="text" placeholder="Título" class="postIt-title"><textarea
-                placeholder="Contenido" class="postIt-content" name="description"></textarea>
-            <button type="submit">Guardar</button>
-        </div>
-    </form>
 
-    <div id="postItContainer" ondragover="dragOver(event)" ondrop="drop(event)">
 
+    <div id="postItContainer" ondragover="dragOver(event)" ondrop="drop(event)" class="ocultar">
+        <!-- Aquí se insertarán los post-its -->
+        <form th:action="@{/user}" method="post">
+            <div class="post-it" draggable="true" ondragstart="dragStart(event)">
+                <span class="postIt-text">Nueva Nota</span>
+                <input name="title" type="text" placeholder="Título" class="postIt-title">
+                <textarea placeholder="Contenido" class="postIt-content" name="description"></textarea>
+                <button type="submit">Guardar</button>
+            </div>
+        </form>
     </div>
     <hr>
     <div id="postItViewer" class="postit-container">
+        <!-- Ciclo para cada nota del usuario -->
         <div th:each="nota : ${listaNotaUser}" class="post-it">
             <div class="datos">
                 <h2 th:text="${nota.title}"></h2>
                 <p th:text="${nota.description}"></p>
-                <button  class="edit-button">Editar</button>
-                <form th:action="@{deleteitem}" method="post">
-                    <input type="hidden" name="itemId" th:value="${nota.id}">
-                    <button type="submit" class="delete-button">Borrar</button>
-                </form>
+                <div class="button-container">
+                    <button class="edit-button">Editar</button>
+                    <form th:action="@{deleteitem}" method="post">
+                        <input type="hidden" name="itemId" th:value="${nota.id}">
+                        <button type="submit" class="delete-button">Borrar</button>
+                    </form>
+                </div>
             </div>
-
             <!-- Formulario de edición -->
             <form th:id="'editForm_' + ${nota.id}" th:action="@{/user/editar}" method="post" class="editar" style="display: none">
                 <input type="hidden" name="id" th:value="${nota.id}">

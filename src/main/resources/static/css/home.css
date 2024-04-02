@@ -1,14 +1,16 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f8f8;
+    background-color: #f0f8ff; /* Color azul celeste */
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Evitar desplazamiento horizontal */
 }
 
 h1 {
-    color: #2e8b57; /* Color verde oscuro */
+    color: #228b22; /* Color verde bosque */
     text-align: center;
     margin-top: 50px;
+    font-size: 36px; /* Tamaño de fuente más grande */
 }
 
 .button-container {
@@ -17,7 +19,7 @@ h1 {
 }
 
 .button {
-    background-color: #7fffd4; /* Color turquesa claro */
+    background-color: #ff69b4; /* Color rosa suave */
     border: none;
     color: white;
     padding: 10px 20px;
@@ -27,11 +29,12 @@ h1 {
     font-size: 16px;
     margin: 10px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 25px; /* Bordes más redondeados */
     transition: background-color 0.3s ease, transform 0.3s ease;
     position: relative;
     overflow: hidden;
     z-index: 1;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3); /* Sombra suave */
 }
 
 .button:before {
@@ -54,9 +57,9 @@ h1 {
 }
 
 .button:hover {
-    background-color: #20b2aa; /* Color turquesa */
+    background-color: #ffb6c1; /* Color rosa claro */
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6); /* Sombra más pronunciada */
 }
 
 .button:active {
