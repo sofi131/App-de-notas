@@ -21,28 +21,37 @@ form {
 
 input[type="text"],
 input[type="password"],
-button#login-button {
+input[type="submit"],
+button#login-button,
+a#login-button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc; /* Añade borde a todos los inputs */
     border-radius: 5px;
     box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: block;
 }
 
 input[type="submit"],
-button#login-button {
-    width: 100%;
+button#login-button,
+a#login-button {
     background-color: #007bff;
     color: #fff;
-    border: none;
-    padding: 12px;
-    border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover,
-button#login-button:hover {
+button#login-button:hover,
+a#login-button:hover {
     background-color: #0056b3;
+}
+
+/* Agrega margen inferior al botón de login */
+button#login-button,
+a#login-button {
+    margin-bottom: 10px;
 }
